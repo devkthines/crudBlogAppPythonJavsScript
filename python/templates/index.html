@@ -49,6 +49,7 @@
     <form id="postForm">
       <input type="text" id="titleInput" placeholder="Title" required />
       <textarea id="contentInput" placeholder="Content" required></textarea>
+      <input type="number" id="userIdInput" placeholder="User ID" required />
       <button type="submit">Create Post</button>
     </form>
     <ul id="postList"></ul>
@@ -56,43 +57,46 @@
     <h2>Comments</h2>
     <form id="commentForm">
       <textarea id="commentInput" placeholder="Comment" required></textarea>
+      <input type="number" id="postIdInput" placeholder="Post ID" required />
+      <input type="number" id="userIdInput" placeholder="User ID" required />
       <button type="submit">Create Comment</button>
     </form>
     <ul id="commentList"></ul>
+
     <h2>Update/Delete User</h2>
     <form id="updateUserForm">
-      <input type="hidden" id="updateUserId">
-      <input type="text" id="updateUsername" placeholder="Username">
-      <input type="email" id="updateEmail" placeholder="Email">
-      <input type="password" id="updatePassword" placeholder="Password">
+      <input type="text" id="updateUserId" placeholder="User ID" required />
+      <input type="text" id="updateUsername" placeholder="Username" required />
+      <input type="email" id="updateEmail" placeholder="Email" required />
+      <input type="password" id="updatePassword" placeholder="Password" required />
       <textarea id="updateBio" placeholder="Bio"></textarea>
       <button type="submit">Update User</button>
     </form>
     <form id="deleteUserForm">
-      <input type="hidden" id="deleteUserId">
+      <input type="text" id="deleteUserId" placeholder="User ID" required />
       <button type="submit">Delete User</button>
     </form>
 
     <h2>Update/Delete Post</h2>
     <form id="updatePostForm">
-      <input type="hidden" id="updatePostId">
-      <input type="text" id="updateTitle" placeholder="Title">
-      <textarea id="updateContent" placeholder="Content"></textarea>
+      <input type="text" id="updatePostId" placeholder="Post ID" required />
+      <input type="text" id="updateTitle" placeholder="Title" required />
+      <textarea id="updateContent" placeholder="Content" required></textarea>
       <button type="submit">Update Post</button>
     </form>
     <form id="deletePostForm">
-      <input type="hidden" id="deletePostId">
+      <input type="text" id="deletePostId" placeholder="Post ID" required />
       <button type="submit">Delete Post</button>
     </form>
 
     <h2>Update/Delete Comment</h2>
     <form id="updateCommentForm">
-      <input type="hidden" id="updateCommentId">
-      <textarea id="updateCommentContent" placeholder="Comment"></textarea>
+      <input type="text" id="updateCommentId" placeholder="Comment ID" required />
+      <textarea id="updateCommentContent" placeholder="Comment" required></textarea>
       <button type="submit">Update Comment</button>
     </form>
     <form id="deleteCommentForm">
-      <input type="hidden" id="deleteCommentId">
+      <input type="text" id="deleteCommentId" placeholder="Comment ID" required />
       <button type="submit">Delete Comment</button>
     </form>
   </body>

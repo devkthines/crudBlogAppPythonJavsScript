@@ -22,7 +22,6 @@ def users():
         db.close()
         return jsonify({'id': user_id}), 201
 
-
 @bp.route('/api/users/<int:user_id>', methods=['PUT', 'DELETE'])
 def user(user_id):
     db = get_db()
@@ -39,6 +38,24 @@ def user(user_id):
         db.close()
         return jsonify({'message': 'User deleted successfully'})
 
+@bp.route('/api/posts', methods=['GET', 'POST'])
+def posts():
+    if request.method == 'GET':
+        db = get_db()
+        posts = db.execute('SELECT * FROM posts').fetchall()
+        db.close()
+        return jsonify([dict(post) for post in posts])
+    elif request.method == 'POST':
+        data = request.get_json()
+        post = Post(data['title'], data['content'], data['userId'])
+        db = get_db()
+        db.execute('INSERT INTO posts (title, content, user_id) VALUES (?, ?, ?)',
+                   (post.title, post.content, post.user_id))
+        db.commit()
+        post_id = db.execute('SELECT last_insert_rowid()').fetchone()[0]
+        db.close()
+        return jsonify({'id': post_id}), 201
+
 @bp.route('/api/posts/<int:post_id>', methods=['PUT', 'DELETE'])
 def post(post_id):
     db = get_db()
@@ -54,6 +71,24 @@ def post(post_id):
         db.commit()
         db.close()
         return jsonify({'message': 'Post deleted successfully'})
+
+@bp.route('/api/comments', methods=['GET', 'POST'])
+def comments():
+    if request.method == 'GET':
+        db = get_db()
+        comments = db.execute('SELECT * FROM comments').fetchall()
+        db.close()
+        return jsonify([dict(comment) for comment in comments])
+    elif request.method == 'POST':
+        data = request.get_json()
+        comment = Comment(data['content'], data['postId'], data['userId'])
+        db = get_db()
+        db.execute('INSERT INTO comments (content, post_id, user_id) VALUES (?, ?, ?)',
+                   (comment.content, comment.post_id, comment.user_id))
+        db.commit()
+        comment_id = db.execute('SELECT last_insert_rowid()').fetchone()[0]
+        db.close()
+        return jsonify({'id': comment_id}), 201
 
 @bp.route('/api/comments/<int:comment_id>', methods=['PUT', 'DELETE'])
 def comment(comment_id):

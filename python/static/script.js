@@ -77,12 +77,12 @@ async function fetchUsers() {
     }
   }
 
-  // Create a new post
-  async function createPost(event) {
+// Create a new post
+async function createPost(event) {
     event.preventDefault();
     const title = document.getElementById('titleInput').value;
     const content = document.getElementById('contentInput').value;
-    const userId = 1; // Replace with the actual user ID
+    const userId = document.getElementById('userIdInput').value;
 
     try {
       const response = await fetch('/api/posts', {
@@ -108,8 +108,8 @@ async function fetchUsers() {
   async function createComment(event) {
     event.preventDefault();
     const content = document.getElementById('commentInput').value;
-    const postId = 1; // Replace with the actual post ID
-    const userId = 1; // Replace with the actual user ID
+    const postId = document.getElementById('postIdInput').value;
+    const userId = document.getElementById('userIdInput').value;
 
     try {
       const response = await fetch('/api/comments', {
@@ -131,17 +131,7 @@ async function fetchUsers() {
     }
   }
 
-  // Event listeners
-  document.getElementById('userForm').addEventListener('submit', createUser);
-  document.getElementById('postForm').addEventListener('submit', createPost);
-  document.getElementById('commentForm').addEventListener('submit', createComment);
-
-  // Initial fetch
-  fetchUsers();
-  fetchPosts();
-  fetchComments();
-
-
+  // Update a user
   async function updateUser(event) {
     event.preventDefault();
     const userId = document.getElementById('updateUserId').value;
@@ -287,9 +277,17 @@ async function fetchUsers() {
   }
 
   // Event listeners
+  document.getElementById('userForm').addEventListener('submit', createUser);
+  document.getElementById('postForm').addEventListener('submit', createPost);
+  document.getElementById('commentForm').addEventListener('submit', createComment);
   document.getElementById('updateUserForm').addEventListener('submit', updateUser);
   document.getElementById('deleteUserForm').addEventListener('submit', deleteUser);
   document.getElementById('updatePostForm').addEventListener('submit', updatePost);
   document.getElementById('deletePostForm').addEventListener('submit', deletePost);
   document.getElementById('updateCommentForm').addEventListener('submit', updateComment);
   document.getElementById('deleteCommentForm').addEventListener('submit', deleteComment);
+
+  // Initial fetch
+  fetchUsers();
+  fetchPosts();
+  fetchComments();
