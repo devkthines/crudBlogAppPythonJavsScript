@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blogging Platform</title>
+    <script src="/script.js" defer></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h2 {
+        margin-top: 30px;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+      form {
+        margin-bottom: 20px;
+      }
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to the Blogging Platform</h1>
+
+    <h2>Users</h2>
+    <form id="userForm">
+      <input type="text" id="usernameInput" placeholder="Username" />
+      <input type="text" id="emailInput" placeholder="Email" />
+      <input type="text" id="passwordInput" placeholder="Password" />
+      <textarea id="bioInput" placeholder="Bio"></textarea>
+      <button type="submit">Create User</button>
+    </form>
+    <ul id="userList"></ul>
+
+    <h2>Posts</h2>
+    <form id="postForm">
+      <input type="text" id="titleInput" placeholder="Title" />
+      <textarea id="contentInput" placeholder="Content"></textarea>
+      <button type="submit">Create Post</button>
+    </form>
+    <ul id="postList"></ul>
+
+    <h2>Comments</h2>
+    <form id="commentForm">
+      <textarea id="commentContentInput" placeholder="Comment"></textarea>
+      <button type="submit">Create Comment</button>
+    </form>
+    <ul id="commentList"></ul>
+
+    <h2>Update/Delete User</h2>
+    <form id="updateUserForm">
+      <input type="text" id="updateUserId" placeholder="User ID" />
+      <input type="text" id="updateUsername" placeholder="Username" />
+      <input type="text" id="updateEmail" placeholder="Email" />
+      <input type="text" id="updatePassword" placeholder="Password" />
+      <textarea id="updateBio" placeholder="Bio"></textarea>
+      <button type="submit">Update User</button>
+    </form>
+    <form id="deleteUserForm">
+      <input type="text" id="deleteUserId" placeholder="User ID" />
+      <button type="submit">Delete User</button>
+    </form>
+
+    <h2>Update/Delete Post</h2>
+    <form id="updatePostForm">
+      <input type="text" id="updatePostId" placeholder="Post ID" />
+      <input type="text" id="updateTitle" placeholder="Title" />
+      <textarea id="updateContent" placeholder="Content"></textarea>
+      <button type="submit">Update Post</button>
+    </form>
+    <form id="deletePostForm">
+      <input type="text" id="deletePostId" placeholder="Post ID" />
+      <button type="submit">Delete Post</button>
+    </form>
+
+    <h2>Update/Delete Comment</h2>
+    <form id="updateCommentForm">
+      <input type="text" id="updateCommentId" placeholder="Comment ID" />
+      <textarea id="updateCommentContent" placeholder="Comment"></textarea>
+      <button type="submit">Update Comment</button>
+    </form>
+    <form id="deleteCommentForm">
+      <input type="text" id="deleteCommentId" placeholder="Comment ID" />
+      <button type="submit">Delete Comment</button>
+    </form>
+  </body>
+</html>
